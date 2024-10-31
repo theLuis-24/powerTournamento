@@ -31,11 +31,11 @@ class Combate {
         System.out.println("Turno de " + heroe.nombre);
         System.out.println("Elige tu acción: ");
         System.out.println("1. Atacar");
-        System.out.println("2. Super Ataque");
+        System.out.println("2. Super Técnica"); // Cambiado de "Super Ataque" a "Super Técnica"
         System.out.println("3. Curarse");
 
         if (heroe.habilidadEspecial.equals("Transformación") && !heroe.transformado) {
-            System.out.println("4. Transformarse");
+            // Ya no es necesario mostrar opción 4, se ha integrado a la opción 2.
         }
 
         int opcion = scanner.nextInt();
@@ -44,17 +44,10 @@ class Combate {
                 heroe.atacar(villano);
                 break;
             case 2:
-                heroe.usarSuperAtaque(villano);
+                heroe.usarSuperAtaque(villano); // Se llama a usarSuperAtaque
                 break;
             case 3:
                 heroe.curarse();
-                break;
-            case 4:
-                if (heroe.habilidadEspecial.equals("Transformación") && !heroe.transformado) {
-                    heroe.usarSuperAtaque(villano);
-                } else {
-                    System.out.println("Opción no válida.");
-                }
                 break;
             default:
                 System.out.println("Opción no válida. Pasas el turno.");

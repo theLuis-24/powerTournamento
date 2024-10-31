@@ -25,7 +25,7 @@ public class Heroe {
             case "Transformación":
                 if (!transformado) {
                     System.out.println(nombre + " se transforma en Super Saiyan, aumentando sus estadísticas.");
-                    fuerza += 20;
+                    fuerza += 25;
                     velocidad += 10;
                     vida_hp += 50;
                     transformado = true;
@@ -36,7 +36,7 @@ public class Heroe {
 
             case "Maxi Curación":
                 if (maxCuras > 0) {
-                    System.out.println(nombre + " usa Maxi Curación y recupera 50 puntos de vida.");
+                    System.out.println(nombre + " usa Maxi Curación y recupera 60 puntos de vida.");
                     vida_hp += 50;
                     maxCuras--;
                 } else {
@@ -45,8 +45,8 @@ public class Heroe {
                 break;
 
             case "Kamehameha":
-                System.out.println(nombre + " lanza un Kamehameha que causa gran daño.");
-                villano.recibirDanio(fuerza * 2);
+                System.out.println(nombre + " lanza un Kamehameha kaioken x3 que causa gran daño.");
+                villano.recibirDanio(fuerza * 3);
                 habilidadEspecial = "Usado"; // Marcar habilidad como utilizada
                 break;
 
@@ -56,8 +56,8 @@ public class Heroe {
                 break;
 
             case "Cargando":
-                System.out.println(nombre + " lanza su ataque cargado con gran potencia.");
-                villano.recibirDanio(fuerza * 3);
+                System.out.println(nombre + " lanza su ataque cargado con gran potencia, toma el poder de la genkidama.");
+                villano.recibirDanio(fuerza * 10);
                 habilidadEspecial = "Usado"; // Marcar habilidad como utilizada
                 break;
 

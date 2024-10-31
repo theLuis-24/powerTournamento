@@ -2,21 +2,24 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
-        MusicPlayer.playSound("songs\\Touhou 19 UDoALG OST - Reimu & Early Story Theme - The World is Made From Cuteness.wav");
-        System.out.println("Bienvenido a My Hero Battle Ultimate");
+        MusicPlayer.playSound("songs\\Touhou 19 UDoALG OST - Title Screen Theme - Intelligence of Beast.wav");
         Scanner scanner = new Scanner(System.in);
-
         int opcion;
         do {
-            System.out.println("1. Iniciar juego");
-            System.out.println("2. Salir");
+            System.out.println("\u001B[34m" + "--------------------------------------------------------------------------------");
+            System.out.println("\u001B[34m" + "                               My Hero Battle Ultimate");
+            System.out.println("\u001B[34m" + "--------------------------------------------------------------------------------");
+            System.out.println("                                 1. Iniciar juego");
+            System.out.println("                                      2. Salir");
             System.out.print("Elige una opción: ");
             opcion = scanner.nextInt();
 
             switch (opcion) {
                 case 1:
+                MusicPlayer.stopMusic();
+                MusicPlayer.playSound("songs\\Touhou 19 UDoALG OST - Reimu & Early Story Theme - The World is Made From Cuteness.wav");
                     Heroe heroe = seleccionarHeroe(scanner);
-                    Villano villano1 = new Villano("Villano 1", 15, 8, 100, "Ataque Especial Villano 1");
+                    Villano villano1 = new Villano("casalander", 15, 8, 100, "Ataque Especial Villano 1");
                     Villano villano2 = new Villano("N-E-O", 20, 10, 120, "Ataque Especial Villano 2");
 
                     Combate combate1 = new Combate(heroe, villano1);
@@ -33,8 +36,8 @@ public class App {
                             MusicPlayer.stopMusic();
                             MusicPlayer.playSound("songs\\EoSD Credits Theme - Crimson Belvedere ~ Eastern Dream....wav"); // Cambia la ruta a tu canción de victoria
                             // Mostrar el mensaje final letra por letra
-                            narrar("El mundo ahora está en paz, los héroes lograron vencer al mal más antiguo de todos, NEO, ahora los guerreros descansan... "
-                                    + "Los combates seguirán hasta que logren vencer al rey demonio WOLF-ESTEIN, conocido también como el programador del cosmos.");
+                            narrar("El mundo ahora está en paz, los héroes lograron vencer un gran mal antiguo de todos, NEO y su secuaz casalander, ahora los guerreros descansan... "
+                                    + "pero ahora un nuevo mal esta por surgir, El rey demonio WOLF-ESTEIN, conocido también como el programador del cosmos.");
                         } else {
                             // Si el héroe es derrotado en el segundo combate
                             mostrarMensajeDerrota();
@@ -58,20 +61,20 @@ public class App {
     public static Heroe seleccionarHeroe(Scanner scanner) {
         System.out.println("Selecciona tu héroe:");
         System.out.println("1. El Mostacho Solar (Transformación)");
-        System.out.println("2. Curador (Maxi Curación)");
-        System.out.println("3. Guerrero (Kamehameha)");
-        System.out.println("4. Cargador (Cargar ataque)");
+        System.out.println("2. genji (Maxi Curación)");
+        System.out.println("3. gonzalo el mago (Kamehameha)");
+        System.out.println("4. magnus el rojo (Cargar ataque)");
 
         int opcion = scanner.nextInt();
         switch (opcion) {
             case 1:
-                return new Heroe("El Mostacho Solar", 25, 15, 100, "Transformación");
+                return new Heroe("El Mostacho Solar", 25, 15, 110, "Transformación");
             case 2:
-                return new Heroe("Curador", 20, 10, 90, "Maxi Curación");
+                return new Heroe("genji", 20, 10, 90, "Maxi Curación");
             case 3:
-                return new Heroe("Guerrero", 30, 12, 80, "Kamehameha");
+                return new Heroe("gonzalo el mago", 30, 12, 100, "Kamehameha");
             case 4:
-                return new Heroe("Cargador", 18, 14, 85, "Cargar Ataque");
+                return new Heroe("magnus el rojo", 26, 14, 120, "Cargar Ataque");
             default:
                 System.out.println("Opción no válida. Seleccionando El Mostacho Solar por defecto.");
                 return new Heroe("El Mostacho Solar", 25, 15, 100, "Transformación");
