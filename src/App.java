@@ -10,14 +10,16 @@ public class App {
             System.out.println("\u001B[34m" + "                               My Hero Battle Ultimate");
             System.out.println("\u001B[34m" + "--------------------------------------------------------------------------------");
             System.out.println("                                 1. Iniciar juego");
-            System.out.println("                                      2. Salir");
+            System.out.println("                                     2. Salir");
+            System.out.println("                                  "); // Opción para el combate secreto
             System.out.print("Elige una opción: ");
             opcion = scanner.nextInt();
 
             switch (opcion) {
                 case 1:
-                MusicPlayer.stopMusic();
-                MusicPlayer.playSound("songs\\Touhou 19 UDoALG OST - Reimu & Early Story Theme - The World is Made From Cuteness.wav");
+                    // Lógica del combate normal (sin cambios)
+                    MusicPlayer.stopMusic();
+                    MusicPlayer.playSound("songs\\Touhou 19 UDoALG OST - Reimu & Early Story Theme - The World is Made From Cuteness.wav");
                     Heroe heroe = seleccionarHeroe(scanner);
                     Villano villano1 = new Villano("casalander", 15, 8, 100, "Ataque Especial Villano 1");
                     Villano villano2 = new Villano("N-E-O", 20, 10, 120, "Ataque Especial Villano 2");
@@ -27,29 +29,34 @@ public class App {
 
                     if (heroe.esVivo()) {
                         System.out.println("Así que lograste vencer a mi compañero, eh... no importa, ahora verás el poder de N-E-O.");
-                        heroe.restaurarVidaCompleta(); // Restaurar vida del héroe
+                        heroe.restaurarVidaCompleta();
                         Combate combate2 = new Combate(heroe, villano2);
                         combate2.iniciar();
 
                         if (heroe.esVivo()) {
-                            // Reproducir la canción de victoria
                             MusicPlayer.stopMusic();
-                            MusicPlayer.playSound("songs\\EoSD Credits Theme - Crimson Belvedere ~ Eastern Dream....wav"); // Cambia la ruta a tu canción de victoria
-                            // Mostrar el mensaje final letra por letra
+                            MusicPlayer.playSound("songs\\EoSD Credits Theme - Crimson Belvedere ~ Eastern Dream....wav");
                             narrar("El mundo ahora está en paz, los héroes lograron vencer un gran mal antiguo de todos, NEO y su secuaz casalander, ahora los guerreros descansan... "
                                     + "pero ahora un nuevo mal esta por surgir, El rey demonio WOLF-ESTEIN, conocido también como el programador del cosmos.");
                         } else {
-                            // Si el héroe es derrotado en el segundo combate
                             mostrarMensajeDerrota();
                         }
                     } else {
-                        // Si el héroe es derrotado en el primer combate
                         mostrarMensajeDerrota();
                     }
                     break;
 
                 case 2:
                     System.out.println("Saliendo del juego...");
+                    break;
+
+                case 7:
+                    // Iniciar combate secreto contra Tablos AF
+                    MusicPlayer.playSound("ESCENCIA\\fakeyou_rvc_v7akyd7czwyapddxzxc2pqvgw3j2teeh.wav");
+                    Heroe heroeSecreto = seleccionarHeroe(scanner);
+                    TablosAF tablosAF = new TablosAF();
+                    CombateSecreto combateSecreto = new CombateSecreto(heroeSecreto, tablosAF);
+                    combateSecreto.iniciar();
                     break;
 
                 default:
@@ -85,27 +92,20 @@ public class App {
         for (char letra : mensaje.toCharArray()) {
             System.out.print(letra);
             try {
-                Thread.sleep(100); // Espera 100 ms entre cada letra para simular la escritura
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
         }
-        System.out.println(); // Nueva línea al final del mensaje
+        System.out.println();
     }
 
     public static void mostrarMensajeDerrota() {
-        // Detener cualquier música actual
         MusicPlayer.stopMusic();
-
-        // Definir el mensaje de derrota
         String mensajeDerrota = "Los héroes han caído ante la oscuridad, "
                               + "ahora nadie podrá detener a los grandes villanos y el futuro de la humanidad habrá acabado, "
                               + "¡sálvanos, Goku!";
-
-        // Reproducir la música de derrota
-        MusicPlayer.playSound("songs\\Deltarune OST： 39 - Laura Shigihara - Don't Forget.wav"); // Cambia la ruta a tu canción de derrota
-
-        // Mostrar el mensaje de derrota letra por letra
+        MusicPlayer.playSound("songs\\Deltarune OST： 39 - Laura Shigihara - Don't Forget.wav");
         narrar(mensajeDerrota);
     }
 }

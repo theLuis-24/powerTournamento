@@ -33,9 +33,13 @@ public class MusicPlayer {
                 clip.loop(0); // Reproducir una vez
 
                 // Esperar hasta que el clip termine
-                Thread.sleep(clip.getMicrosecondLength() / 1000);
+                clip.addLineListener(event -> {
+                    if (event.getType() == javax.sound.sampled.LineEvent.Type.STOP) {
+                        clip.close(); // Cerrar clip al finalizar
+                    }
+                });
 
-            } catch (UnsupportedAudioFileException | IOException | LineUnavailableException | InterruptedException e) {
+            } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
                 e.printStackTrace();
             }
         }).start();
@@ -44,7 +48,6 @@ public class MusicPlayer {
     public static void stopMusic() {
         if (clip != null && clip.isRunning()) {
             clip.stop();    // Detener la reproducción
-            clip.close();   // Liberar recursos
         }
     }
 }

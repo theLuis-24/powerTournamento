@@ -20,15 +20,15 @@ class Villano {
     }
 
     public void ataqueFuerte(Heroe heroe) {
-        int danio = fuerza + 10;
-        System.out.println(nombre + " usa un ataque fuerte y causa " + danio + " de daño.");
-        heroe.vida_hp -= danio;
+        int daño = fuerza + 10;
+        System.out.println(nombre + " usa un ataque fuerte y causa " + daño + " de daño.");
+        heroe.vida_hp -= daño;
     }
 
     public void ataqueEspecial(Heroe heroe) {
-        int danio = fuerza + 20;
-        System.out.println(nombre + " usa su ataque especial y causa " + danio + " de daño.");
-        heroe.vida_hp -= danio;
+        int daño = fuerza + 20;
+        System.out.println(nombre + " usa su ataque especial y causa " + daño + " de daño.");
+        heroe.vida_hp -= daño;
         cooldownEspecial = 2;
     }
 
@@ -36,9 +36,9 @@ class Villano {
         if (cooldownEspecial > 0) cooldownEspecial--;
     }
 
-    public void recibirDanio(int danio) {
-        vida_hp -= danio;
-        System.out.println(nombre + " recibe " + danio + " de daño. Vida restante: " + vida_hp);
+    public void recibirDaño(int daño) {
+        vida_hp -= daño;
+        System.out.println(nombre + " recibe " + daño + " de daño. Vida restante: " + vida_hp);
     }
 
     public boolean esVivo() {

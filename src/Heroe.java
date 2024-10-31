@@ -17,7 +17,7 @@ public class Heroe {
 
     public void atacar(Villano villano) {
         System.out.println(nombre + " ataca a " + villano.nombre + ".");
-        villano.recibirDanio(fuerza);
+        villano.recibirDaño(fuerza);
     }
 
     public void usarSuperAtaque(Villano villano) {
@@ -46,7 +46,7 @@ public class Heroe {
 
             case "Kamehameha":
                 System.out.println(nombre + " lanza un Kamehameha kaioken x3 que causa gran daño.");
-                villano.recibirDanio(fuerza * 3);
+                villano.recibirDaño(fuerza * 3);
                 habilidadEspecial = "Usado"; // Marcar habilidad como utilizada
                 break;
 
@@ -57,7 +57,7 @@ public class Heroe {
 
             case "Cargando":
                 System.out.println(nombre + " lanza su ataque cargado con gran potencia, toma el poder de la genkidama.");
-                villano.recibirDanio(fuerza * 10);
+                villano.recibirDaño(fuerza * 10);
                 habilidadEspecial = "Usado"; // Marcar habilidad como utilizada
                 break;
 
